@@ -409,8 +409,8 @@ export default function CandidatesTable({ initialCandidates, userRole, userId }:
                         </button>
                       )}
 
-                      {/* Email Actions (Manager/Admin only, Approved & Ready candidates) */}
-                      {candidate.approval_status === 'Approved' && candidate.send_status === 'Ready' && (userRole === 'Admin' || userRole === 'HR Manager') && (
+                      {/* Email Actions (Manager/Admin only, Approved & Ready/Failed candidates) */}
+                      {candidate.approval_status === 'Approved' && (candidate.send_status === 'Ready' || candidate.send_status === 'Failed') && (userRole === 'Admin' || userRole === 'HR Manager') && (
                         <button
                           className="icon-btn"
                           title={sendingId === candidate.id ? "Sending..." : "Send Email"}
