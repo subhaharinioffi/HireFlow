@@ -8,6 +8,7 @@ import { Eye, EyeOff, Lock, Mail, ArrowRight, User, ShieldAlert, CheckCircle2 } 
 export default function SignupPage() {
   const [state, formAction, isPending] = useActionState(signup, null)
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState('')
 
   return (
     <div className="auth-container">
@@ -93,7 +94,9 @@ export default function SignupPage() {
                     type="email"
                     placeholder="jane.doe@company.com"
                     className="form-control"
-                    style={{ paddingLeft: '38px' }}
+                    style={{ paddingLeft: '38px', textTransform: 'lowercase' }}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value.toLowerCase().replace(/\s/g, ''))}
                     required
                     disabled={isPending}
                   />

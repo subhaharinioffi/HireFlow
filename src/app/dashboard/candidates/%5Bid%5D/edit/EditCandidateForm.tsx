@@ -77,6 +77,11 @@ export default function EditCandidateForm({ candidate }: EditCandidateFormProps)
               type="email"
               defaultValue={candidate.email}
               className="form-control"
+              style={{ textTransform: 'lowercase' }}
+              onInput={(e) => {
+                const target = e.target as HTMLInputElement
+                target.value = target.value.toLowerCase().replace(/\s/g, '')
+              }}
               required
               disabled={isPending}
             />

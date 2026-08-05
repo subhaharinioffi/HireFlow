@@ -8,6 +8,7 @@ import { Eye, EyeOff, Lock, Mail, ArrowRight, ShieldAlert } from 'lucide-react'
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, null)
   const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState('')
 
   return (
     <div className="auth-container">
@@ -62,7 +63,9 @@ export default function LoginPage() {
                   type="email"
                   placeholder="name@company.com"
                   className="form-control"
-                  style={{ paddingLeft: '38px' }}
+                  style={{ paddingLeft: '38px', textTransform: 'lowercase' }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value.toLowerCase().replace(/\s/g, ''))}
                   required
                   disabled={isPending}
                 />

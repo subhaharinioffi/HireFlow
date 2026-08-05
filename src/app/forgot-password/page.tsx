@@ -1,12 +1,13 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { forgotPassword } from '@/app/actions/authActions'
 import Link from 'next/link'
 import { Mail, ArrowRight, ArrowLeft, ShieldAlert, CheckCircle2 } from 'lucide-react'
 
 export default function ForgotPasswordPage() {
   const [state, formAction, isPending] = useActionState(forgotPassword, null)
+  const [email, setEmail] = useState('')
 
   return (
     <div className="auth-container">
@@ -63,7 +64,9 @@ export default function ForgotPasswordPage() {
                     type="email"
                     placeholder="name@company.com"
                     className="form-control"
-                    style={{ paddingLeft: '38px' }}
+                    style={{ paddingLeft: '38px', textTransform: 'lowercase' }}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value.toLowerCase().replace(/\s/g, ''))}
                     required
                     disabled={isPending}
                   />
