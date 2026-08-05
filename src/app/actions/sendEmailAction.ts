@@ -3,9 +3,17 @@
 import { createClient } from '@/lib/supabase/server'
 import nodemailer from 'nodemailer'
 import { revalidatePath } from 'next/cache'
+import dns from 'dns'
 
 // Create Nodemailer Transporter
 function getTransporter() {
+  // Force Node.js to prefer IPv4 over IPv6 to resolve ENETUNREACH errors on networks without IPv6 routes
+  try {
+    dns.setDefaultResultOrder('ipv4first')
+  } catch {
+    // Ignore if not supported
+  }
+
   const host = process.env.SMTP_HOST
   const port = parseInt(process.env.SMTP_PORT || '587')
   const user = process.env.SMTP_USER
