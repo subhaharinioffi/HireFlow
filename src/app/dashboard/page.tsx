@@ -183,15 +183,6 @@ export default async function DashboardPage() {
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        /* Three-to-one grid ratio */
-        @media (min-width: 1024px) {
-          .d-lg-grid-cols-3-1 {
-            grid-template-columns: 2.2fr 1fr !important;
-          }
-        }
-      `}</style>
     </div>
   )
 }
