@@ -1,5 +1,6 @@
 import PDFDocument from 'pdfkit'
 import QRCode from 'qrcode'
+import path from 'path'
 
 export interface PdfData {
   document_type: string
@@ -26,6 +27,16 @@ export async function generatePdfBuffer(
       const doc = new PDFDocument({ size: 'A4', margin: 50 })
       const chunks: Buffer[] = []
 
+      // Register custom TTF fonts to prevent Next.js/Turbopack Helvetica.afm ENOENT errors on Windows/server bundles
+      const regularFontPath = path.join(process.cwd(), 'src/lib/pdf/fonts/Roboto-Regular.ttf')
+      const boldFontPath = path.join(process.cwd(), 'src/lib/pdf/fonts/Roboto-Bold.ttf')
+
+      doc.registerFont('Roboto', regularFontPath)
+      doc.registerFont('Roboto-Bold', boldFontPath)
+
+      // Start with Roboto
+      doc.font('Roboto')
+
       doc.on('data', (chunk) => chunks.push(chunk))
       doc.on('end', () => resolve(Buffer.concat(chunks)))
       doc.on('error', (err) => reject(err))
@@ -46,22 +57,22 @@ export async function generatePdfBuffer(
           doc.image(logoBuffer, 50, 50, { height: 40 })
         } catch {
           // If fetch fails, draw company name text
-          doc.fillColor('#0F172A').fontSize(18).font('Helvetica-Bold').text(data.company_name, 50, 55)
+          doc.fillColor('#0F172A').fontSize(18).font('Roboto-Bold').text(data.company_name, 50, 55)
         }
       } else {
-        doc.fillColor('#0F172A').fontSize(18).font('Helvetica-Bold').text(data.company_name, 50, 55)
+        doc.fillColor('#0F172A').fontSize(18).font('Roboto-Bold').text(data.company_name, 50, 55)
       }
 
       // Add a horizontal divider line for non-certificates (or clean line for certificates)
       doc.moveTo(50, 105).lineTo(545, 105).strokeColor('#E5E7EB').lineWidth(1).stroke()
 
       // 2. Add metadata
-      doc.fillColor('#6B7280').fontSize(9).font('Helvetica')
+      doc.fillColor('#6B7280').fontSize(9).font('Roboto')
       doc.text(`Reference: ${data.document_reference}`, 350, 120, { align: 'right', width: 195 })
       doc.text(`Date of Issue: ${data.issue_date}`, 350, 132, { align: 'right', width: 195 })
 
       // Document Title
-      doc.fillColor('#111827').fontSize(22).font('Helvetica-Bold')
+      doc.fillColor('#111827').fontSize(22).font('Roboto-Bold')
       if (isCertificate) {
         doc.text(data.document_type.toUpperCase(), 50, 170, { align: 'center', width: 495 })
       } else {
@@ -79,7 +90,7 @@ export async function generatePdfBuffer(
         .replace(/{{issue_date}}/g, data.issue_date)
         .replace(/{{certificate_id}}/g, data.certificate_id || '')
 
-      doc.font('Helvetica').fontSize(11).fillColor('#374151')
+      doc.font('Roboto').fontSize(11).fillColor('#374151')
       
       const textYStart = isCertificate ? 250 : 180
       doc.text(bodyText, 50, textYStart, { width: 495, align: isCertificate ? 'center' : 'left', lineGap: 6 })
@@ -89,7 +100,7 @@ export async function generatePdfBuffer(
         try {
           const qrBuffer = await QRCode.toBuffer(data.verification_url, { margin: 1, width: 80 })
           doc.image(qrBuffer, 50, 680, { width: 70 })
-          doc.fillColor('#6B7280').fontSize(8).font('Helvetica-Oblique')
+          doc.fillColor('#6B7280').fontSize(8).font('Roboto')
           doc.text('Scan QR Code to verify.', 50, 755)
           doc.text(`ID: ${data.certificate_id}`, 50, 765)
         } catch {
@@ -111,8 +122,8 @@ export async function generatePdfBuffer(
       }
 
       doc.moveTo(350, signatureYPos).lineTo(500, signatureYPos).strokeColor('#9CA3AF').lineWidth(1).stroke()
-      doc.fillColor('#111827').font('Helvetica-Bold').fontSize(10).text('Authorized Signatory', 350, signatureYPos + 6, { align: 'center', width: 150 })
-      doc.fillColor('#6B7280').font('Helvetica').fontSize(8).text('HireFlow HR Operations', 350, signatureYPos + 18, { align: 'center', width: 150 })
+      doc.fillColor('#111827').font('Roboto-Bold').fontSize(10).text('Authorized Signatory', 350, signatureYPos + 6, { align: 'center', width: 150 })
+      doc.fillColor('#6B7280').font('Roboto').fontSize(8).text('HireFlow HR Operations', 350, signatureYPos + 18, { align: 'center', width: 150 })
 
       doc.end()
     } catch (err) {
