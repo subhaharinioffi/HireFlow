@@ -722,3 +722,11 @@ a:hover {
     grid-template-columns: 2.2fr 1fr !important;
   }
 }
+
+/* Settings Responsiveness Helper */
+@media (min-width: 768px) {
+  .d-md-grid-cols-2 {
+    grid-template-columns: 1.2fr 1fr !important;
+  }
+}
+

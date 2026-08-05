@@ -114,14 +114,6 @@ export default async function SettingsPage() {
 
         </div>
       </div>
-
-      <style jsx global>{`
-        @media (min-width: 768px) {
-          .d-md-grid-cols-2 {
-            grid-template-columns: 1.2fr 1fr !important;
-          }
-        }
-      `}</style>
     </div>
   )
 }
