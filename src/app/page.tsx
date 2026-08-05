@@ -50,7 +50,7 @@ export default function LandingPage() {
         <div style={{ position: 'absolute', top: '-10%', left: '15%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', zIndex: 1 }} />
         <div style={{ position: 'absolute', bottom: '0', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, transparent 70%)', zIndex: 1 }} />
 
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '48px', alignItems: 'center', position: 'relative', zIndex: 2 }} className="d-lg-grid-cols-2">
+        <div className="container d-lg-grid-cols-2" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '48px', alignItems: 'center', position: 'relative', zIndex: 2 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 12px', background: 'var(--color-accent-bg)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: '9999px', fontSize: '12px', color: 'var(--color-accent)', fontWeight: '600', marginBottom: '20px' }}>
               <span>Version 1.0 Release</span>
@@ -244,7 +244,7 @@ export default function LandingPage() {
 
       {/* Security Section */}
       <section id="security" style={{ padding: '80px 0', borderTop: '1px solid rgba(255,255,255,0.04)', background: 'linear-gradient(180deg, #0B0F19 0%, #070B14 100%)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }} className="d-lg-grid-cols-2">
+        <div className="container d-lg-grid-cols-2" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px', alignItems: 'center' }}>
           
           <div>
             <h2 style={{ fontSize: '32px', fontWeight: '700', marginBottom: '16px' }}>Compliance-First Security</h2>
