@@ -704,4 +704,17 @@ a:hover {
   }
 }
 
+/* Landing Page Responsiveness Helper */
+@media (min-width: 1024px) {
+  .d-lg-grid-cols-2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 768px) {
+  .landing-nav {
+    display: none !important;
+  }
+}
+
+
 

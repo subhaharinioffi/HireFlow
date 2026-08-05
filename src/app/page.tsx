@@ -138,7 +138,6 @@ export default function LandingPage() {
             <div style={{ position: 'absolute', top: '10px', left: '10px', right: '-10px', bottom: '-10px', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)', border: '1px solid rgba(255,255,255,0.03)', borderRadius: 'var(--border-radius-lg)', zIndex: 3 }} />
           </div>
         </div>
-      </div>
       </section>
 
       {/* Features Section */}
@@ -330,20 +329,6 @@ export default function LandingPage() {
           &copy; {new Date().getFullYear()} HireFlow Corporation. All Rights Reserved. Protected by industry-standard cryptographical layers.
         </div>
       </footer>
-
-      <style jsx global>{`
-        /* Display grid responsiveness helper */
-        @media (min-width: 1024px) {
-          .d-lg-grid-cols-2 {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .landing-nav {
-            display: none !important;
-          }
-        }
-      `}</style>
     </div>
   )
 }
