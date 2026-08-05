@@ -133,7 +133,7 @@ export default function DocumentsTable({ initialDocuments, userRole }: Documents
       )}
 
       {/* Filters */}
-      <div className="card" style={{ padding: '16px', marginBottom: '24px', display: 'flex', gap: '12px' }} className="d-md-grid-cols-2">
+      <div className="card d-md-grid-cols-2" style={{ padding: '16px', marginBottom: '24px', display: 'flex', gap: '12px' }}>
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', flex: 1 }}>
           <Search size={16} style={{ position: 'absolute', left: '12px', color: 'var(--color-text-muted)' }} />
           <input

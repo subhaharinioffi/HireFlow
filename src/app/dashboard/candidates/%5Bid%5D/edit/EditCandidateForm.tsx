@@ -143,7 +143,11 @@ export default function EditCandidateForm({ candidate }: EditCandidateFormProps)
           </div>
 
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', marginTop: '24px' }}>
-            <Link href="/dashboard/candidates" className="btn btn-secondary" disabled={isPending}>
+            <Link 
+              href="/dashboard/candidates" 
+              className="btn btn-secondary" 
+              style={isPending ? { pointerEvents: 'none', opacity: 0.6 } : undefined}
+            >
               Cancel
             </Link>
             <button type="submit" className="btn btn-primary" style={{ gap: '8px' }} disabled={isPending}>

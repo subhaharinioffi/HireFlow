@@ -66,10 +66,9 @@ export default function Header({
       <div className="header-left">
         {/* Toggle button for large screens */}
         <button 
-          className="icon-btn" 
+          className="icon-btn d-md-flex" 
           onClick={() => setCollapsed(!collapsed)}
           style={{ display: 'none' }}
-          className="icon-btn d-md-flex" /* We will show it by default except mobile */
         >
           <Menu size={18} />
         </button>
@@ -105,7 +104,7 @@ export default function Header({
             <div className="profile-avatar">
               {getInitials(userName)}
             </div>
-            <div className="profile-details" style={{ display: 'none' }} className="profile-details d-md-flex">
+            <div className="profile-details d-md-flex" style={{ display: 'none' }}>
               <span className="profile-name">{userName || 'HR Portal User'}</span>
               <span className="profile-role">{userRole || 'HR Executive'}</span>
             </div>

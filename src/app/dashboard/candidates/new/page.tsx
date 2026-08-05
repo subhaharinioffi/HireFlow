@@ -21,7 +21,7 @@ export default function NewCandidatePage() {
       <div className="card">
         {state?.success ? (
           <div style={{ textAlign: 'center', padding: '16px 0' }}>
-            <div style={{ width: '48px', height: '48px', background: 'var(--color-success-bg)', color: 'var(--color-success)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifycontent: 'center', margin: '0 auto 16px' }}>
+            <div style={{ width: '48px', height: '48px', background: 'var(--color-success-bg)', color: 'var(--color-success)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
               <Check size={24} />
             </div>
             <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '10px' }}>Candidate Created!</h3>

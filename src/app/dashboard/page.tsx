@@ -111,7 +111,7 @@ export default async function DashboardPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px' }} className="d-lg-grid-cols-3-1">
         {/* Recent Activity */}
         <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', justifycontent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px' }}>
             <h2 style={{ fontSize: '16px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <History size={18} style={{ color: 'var(--color-accent)' }} />
               Recent System Activity
@@ -123,7 +123,7 @@ export default async function DashboardPage() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', flex: 1 }}>
             {!recentLogs || recentLogs.length === 0 ? (
-              <div style={{ padding: '40px 0', textalign: 'center', color: 'var(--color-text-muted)', fontSize: '13px' }}>
+              <div style={{ padding: '40px 0', textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '13px' }}>
                 No platform activity logged yet.
               </div>
             ) : (
@@ -131,7 +131,7 @@ export default async function DashboardPage() {
                 <div key={log.id} style={{ display: 'flex', gap: '12px', fontSize: '13px', borderBottom: '1px solid rgba(255,255,255,0.02)', paddingBottom: '10px' }}>
                   <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-accent)', marginTop: '5px', flexShrink: 0 }} />
                   <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex', justifycontent: 'space-between', marginBottom: '2px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
                       <span style={{ fontWeight: '600', color: 'var(--color-text-primary)' }}>{log.action}</span>
                       <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
                         {new Date(log.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -150,7 +150,7 @@ export default async function DashboardPage() {
 
         {/* Email Status Breakdown */}
         <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', justifycontent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px' }}>
             <h2 style={{ fontSize: '16px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Mail size={18} style={{ color: 'var(--color-accent)' }} />
               SMTP Delivery Status
@@ -160,8 +160,8 @@ export default async function DashboardPage() {
             </Link>
           </div>
 
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifycontent: 'center', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', padding: '12px', background: 'rgba(16,185,129,0.04)', border: '1px solid rgba(16,185,129,0.1)', borderRadius: 'var(--border-radius)' }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px', background: 'rgba(16,185,129,0.04)', border: '1px solid rgba(16,185,129,0.1)', borderRadius: 'var(--border-radius)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <CheckCircle size={18} style={{ color: 'var(--color-success)' }} />
                 <span style={{ fontSize: '13px', fontWeight: '500' }}>Sent Successfully</span>
@@ -169,7 +169,7 @@ export default async function DashboardPage() {
               <span style={{ fontSize: '18px', fontWeight: '700', color: 'var(--color-success)' }}>{sentEmails || 0}</span>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', padding: '12px', background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.1)', borderRadius: 'var(--border-radius)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px', background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.1)', borderRadius: 'var(--border-radius)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <XCircle size={18} style={{ color: 'var(--color-error)' }} />
                 <span style={{ fontSize: '13px', fontWeight: '500' }}>Dispatch Failures</span>

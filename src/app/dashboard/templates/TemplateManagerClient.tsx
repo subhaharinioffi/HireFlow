@@ -185,7 +185,7 @@ export default function TemplateManagerClient({ initialTemplates }: TemplateMana
       .replace(/{{issue_date}}/g, 'August 5, 2026')
       .replace(/{{certificate_id}}/g, 'CERT-2026-HF89')
 
-    return preview.split('\n').map((line, i) => <p key={i} style={{ marginBottom: '10px', minHeight: '18px' }}>{line}</p>)
+    return preview.split('\n').map((line: string, i: number) => <p key={i} style={{ marginBottom: '10px', minHeight: '18px' }}>{line}</p>)
   }
 
   return (
@@ -255,18 +255,18 @@ export default function TemplateManagerClient({ initialTemplates }: TemplateMana
 
           {/* Logo Upload */}
           <div className="form-group" style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--color-border)', borderRadius: 'var(--border-radius)', padding: '16px' }}>
-            <label className="form-label" style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', marginBottom: '10px' }}>
+            <label className="form-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <span>Company Logo</span>
               {logoUrl && <span style={{ color: 'var(--color-success)', fontSize: '11px', fontWeight: '500' }}>✓ Loaded</span>}
             </label>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
               {logoUrl ? (
-                <div style={{ width: '80px', height: '40px', background: 'white', display: 'flex', alignItems: 'center', justifycontent: 'center', padding: '6px', borderRadius: '4px', overflow: 'hidden' }}>
+                <div style={{ width: '80px', height: '40px', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6px', borderRadius: '4px', overflow: 'hidden' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={logoUrl} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                 </div>
               ) : (
-                <div style={{ width: '80px', height: '40px', border: '1px dashed var(--color-border)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifycontent: 'center', color: 'var(--color-text-muted)' }}>
+                <div style={{ width: '80px', height: '40px', border: '1px dashed var(--color-border)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-muted)' }}>
                   <ImageIcon size={16} />
                 </div>
               )}
@@ -296,18 +296,18 @@ export default function TemplateManagerClient({ initialTemplates }: TemplateMana
 
           {/* Signature Upload */}
           <div className="form-group" style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--color-border)', borderRadius: 'var(--border-radius)', padding: '16px', marginTop: '12px' }}>
-            <label className="form-label" style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-between', marginBottom: '10px' }}>
+            <label className="form-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <span>Authorized Signature</span>
               {signatureUrl && <span style={{ color: 'var(--color-success)', fontSize: '11px', fontWeight: '500' }}>✓ Loaded</span>}
             </label>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
               {signatureUrl ? (
-                <div style={{ width: '80px', height: '40px', background: 'white', display: 'flex', alignItems: 'center', justifycontent: 'center', padding: '6px', borderRadius: '4px', overflow: 'hidden' }}>
+                <div style={{ width: '80px', height: '40px', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6px', borderRadius: '4px', overflow: 'hidden' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={signatureUrl} alt="Signature" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                 </div>
               ) : (
-                <div style={{ width: '80px', height: '40px', border: '1px dashed var(--color-border)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifycontent: 'center', color: 'var(--color-text-muted)' }}>
+                <div style={{ width: '80px', height: '40px', border: '1px dashed var(--color-border)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-muted)' }}>
                   <ImageIcon size={16} />
                 </div>
               )}
