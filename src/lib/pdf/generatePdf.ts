@@ -24,12 +24,11 @@ export async function generatePdfBuffer(
 ): Promise<Buffer> {
   return new Promise(async (resolve, reject) => {
     try {
-      const doc = new PDFDocument({ size: 'A4', margin: 50 })
-      const chunks: Buffer[] = []
-
-      // Register custom TTF fonts to prevent Next.js/Turbopack Helvetica.afm ENOENT errors on Windows/server bundles
       const regularFontPath = path.join(process.cwd(), 'src/lib/pdf/fonts/Roboto-Regular.ttf')
       const boldFontPath = path.join(process.cwd(), 'src/lib/pdf/fonts/Roboto-Bold.ttf')
+
+      const doc = new PDFDocument({ size: 'A4', margin: 50, font: regularFontPath })
+      const chunks: Buffer[] = []
 
       doc.registerFont('Roboto', regularFontPath)
       doc.registerFont('Roboto-Bold', boldFontPath)
